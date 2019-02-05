@@ -1,8 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import Link from 'next/link'
 
-function Hero(props) {
+interface HeroProps extends React.Props<Element> {
+  backgroundClass: string,
+  topLinks: any[],
+  heroTitle: string,
+  subtitle: string,
+}
+
+export const Hero: React.FunctionComponent = (props: HeroProps) => {
   return (
     <div className={`relative tc ${props.backgroundClass}`}>
       <div className="mw7 center white pv4">
@@ -36,12 +42,6 @@ function Hero(props) {
   )
 }
 
-Hero.propTypes = {
-  backgroundClass: PropTypes.string,
-  topLinks: PropTypes.array,
-  heroTitle: PropTypes.string,
-  subtitle: PropTypes.string,
-}
 
 Hero.defaultProps = {
   backgroundClass: 'bg-mid-gray',

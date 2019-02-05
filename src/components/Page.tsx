@@ -1,11 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import Header from './Header'
 import Hero from './Hero'
 import Footer from './Footer'
 import Tracking from './Tracking'
 
-function Page(props) {
+interface PageProps extends React.Props<React.ReactNode>{
+  heroTitle: string,
+  description: string,
+  stylesheets?: string[],
+  topLinks?: string[],
+  siteId: string,
+}
+
+export const Page: React.FunctionComponent = (props: PageProps) => {
   return (
     <div>
       <Header
@@ -30,14 +37,6 @@ function Page(props) {
       </main>
     </div>
   )
-}
-
-Page.propTypes = {
-  heroTitle: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  stylesheets: PropTypes.array,
-  topLinks: PropTypes.array,
-  siteId: PropTypes.string.isRequired,
 }
 
 Page.defaultProps = {

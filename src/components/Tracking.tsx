@@ -1,7 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 
-function getGaScript (siteId) {
+function getGaScript (siteId: string) {
   return `
   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
   function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -12,7 +11,11 @@ function getGaScript (siteId) {
 `
 }
 
-function Tracking(props) {
+interface TrackingProps extends React.Props<React.ReactChild> {
+  siteId: string
+}
+
+function Tracking(props: TrackingProps) {
   return (
     <div>
       <script dangerouslySetInnerHTML={{ __html: getGaScript(props.siteId) }} />
@@ -20,8 +23,5 @@ function Tracking(props) {
   )
 }
 
-Tracking.propTypes = {
-  siteId: PropTypes.string.isRequired,
-}
 
 export default Tracking

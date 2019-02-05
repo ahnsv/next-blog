@@ -1,8 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import Head from 'next/head'
 
-function Header(props) {
+interface HeaderProps extends React.Props<Element> {
+  siteTitle: string,
+  description: string,
+  stylesheets?: any[]
+}
+
+export const Header: React.FunctionComponent = (props: HeaderProps) => {
   return (
     <Head>
       <title>{props.siteTitle}</title>
@@ -18,12 +23,6 @@ function Header(props) {
       `}</style>
     </Head>
   )
-}
-
-Header.propTypes = {
-  siteTitle: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  stylesheets: PropTypes.array,
 }
 
 export default Header
